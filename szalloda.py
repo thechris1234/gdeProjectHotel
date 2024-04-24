@@ -20,16 +20,16 @@ class Foglalas:
         from datetime import datetime
 
         self.szoba = szoba
-        self.erkezes = datetime.strptime(erkezes, "%Y.%m.%d").timestamp()
-        self.tavozas = datetime.strptime(tavozas, "%Y.%m.%d").timestamp()
+        self.erkezes = datetime.strptime(erkezes, '%Y.%m.%d').timestamp()
+        self.tavozas = datetime.strptime(tavozas, '%Y.%m.%d').timestamp()
 
 class Szalloda:
     def __init__(self, szobamennyiseg: int, elorefoglalt: int):
         from datetime import datetime, date
 
         self.nev = "Gazdag ember"
-        self.datum = date.today().strftime("%Y.%m.%d")
-        self.ma = datetime.strptime(self.datum, "%Y.%m.%d").timestamp()
+        self.datum = date.today().strftime('%Y.%m.%d')
+        self.ma = datetime.strptime(self.datum, '%Y.%m.%d').timestamp()
         
         self.szobak = dict()
         self.foglalasok = []
@@ -109,8 +109,8 @@ class Szalloda:
 
         self.foglalasok.append({'szobaszam': szobaszam, 'erkezes': erkezes , 'tavozas': tavozas})
     
-        erkezes = datetime.fromtimestamp(erkezes).strftime("%Y.%m.%d")
-        tavozas = datetime.fromtimestamp(tavozas).strftime("%Y.%m.%d")
+        erkezes = datetime.fromtimestamp(erkezes).strftime('%Y.%m.%d')
+        tavozas = datetime.fromtimestamp(tavozas).strftime('%Y.%m.%d')
 
         if visszajelzes:
             print(f"Sikeres foglalás a {szobaszam} számú szobára {erkezes} és {tavozas} között!")
@@ -119,8 +119,8 @@ class Szalloda:
     def foglalasLemondas(self, szobaszam: int, erkezes: str, tavozas: str):
         from datetime import datetime
 
-        erkezes = datetime.strptime(erkezes, "%Y.%m.%d").timestamp()
-        tavozas = datetime.strptime(tavozas, "%Y.%m.%d").timestamp()
+        erkezes = datetime.strptime(erkezes, '%Y.%m.%d').timestamp()
+        tavozas = datetime.strptime(tavozas, '%Y.%m.%d').timestamp()
 
         for foglalas in self.foglalasok:
             fszobaszam = foglalas['szobaszam']
@@ -137,10 +137,10 @@ class Szalloda:
     def foglalasokListazasa(self):
         from datetime import datetime
 
-        print(f"A szálloda foglalás listája:")
+        print(f"A(z) {szalloda.nev} szálloda foglalásainak listája:")
         
         for foglalas in self.foglalasok:
-            print(f"A {foglalas['szobaszam']} szoba le van foglalva {datetime.fromtimestamp(foglalas['erkezes']).strftime("%Y.%m.%d")} - {datetime.fromtimestamp(foglalas['tavozas']).strftime("%Y.%m.%d")} között")
+            print(f"A {foglalas['szobaszam']} szoba le van foglalva {datetime.fromtimestamp(foglalas['erkezes']).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(foglalas['tavozas']).strftime('%Y.%m.%d')} között")
 
 
 #Felhasználói Interfész
@@ -249,7 +249,7 @@ class Porta:
         from datetime import datetime
         
         try:
-            datetime.strptime(datum, "%Y.%m.%d")
+            datetime.strptime(datum, '%Y.%m.%d')
             return True
         except ValueError:
             return False
