@@ -130,15 +130,13 @@ class Szalloda:
                     f"A {szobaszam} számú szoba foglalása {datetime.fromtimestamp(erkezes).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(tavozas).strftime('%Y.%m.%d')} között sikeresen törölve!")
                 return
 
-        print(
-            f"A {szobaszam} számú szoba foglalása {datetime.fromtimestamp(erkezes).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(tavozas).strftime('%Y.%m.%d')} között nem található!")
+        print(f"A {szobaszam} számú szoba foglalása {datetime.fromtimestamp(erkezes).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(tavozas).strftime('%Y.%m.%d')} között nem található!")
 
     def foglalasokListazasa(self):
         print(f"A(z) {szalloda.nev} szálloda foglalásainak listája: ")
 
         for foglalas in self.foglalasok:
-            print(
-                f"A {foglalas['szobaszam']} szoba le van foglalva {datetime.fromtimestamp(foglalas['erkezes']).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(foglalas['tavozas']).strftime('%Y.%m.%d')} között")
+            print(f"A {foglalas['szobaszam']} szoba le van foglalva {datetime.fromtimestamp(foglalas['erkezes']).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(foglalas['tavozas']).strftime('%Y.%m.%d')} között")
 
 
 # Felhasználói Interfész
