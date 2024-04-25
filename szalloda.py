@@ -1,3 +1,6 @@
+from datetime import datetime, date
+from random import randint, choice
+
 class Szoba:
     def __init__(self, szobaszam: int, ar: int):
         self.szobaszam = szobaszam
@@ -17,16 +20,12 @@ class Foglalas:
     nap = None
 
     def __init__(self, szoba: Szoba, erkezes: str, tavozas: str):
-        from datetime import datetime
-
         self.szoba = szoba
         self.erkezes = datetime.strptime(erkezes, '%Y.%m.%d').timestamp()
         self.tavozas = datetime.strptime(tavozas, '%Y.%m.%d').timestamp()
 
 class Szalloda:
     def __init__(self, szobamennyiseg: int, elorefoglalt: int):
-        from datetime import datetime, date
-
         self.nev = "Gazdag ember"
         self.datum = date.today().strftime('%Y.%m.%d')
         self.ma = datetime.strptime(self.datum, '%Y.%m.%d').timestamp()
@@ -41,8 +40,6 @@ class Szalloda:
             self.szobakLefoglalasa(elorefoglalt)
     
     def szobakFeltoltese(self, mennyiseg: int):
-        from random import randint
-    
         for _ in range(0, mennyiseg):
             egyagyas = bool(randint(0, 1))
             ar = 150 if egyagyas else 250
@@ -84,8 +81,6 @@ class Szalloda:
         return True
 
     def szobakLefoglalasa(self, mennyiseg: int):
-        from random import randint, choice
-
         for _ in range(0, mennyiseg):
             szobaszam = choice(list(self.szobak.keys()))
 
@@ -98,8 +93,6 @@ class Szalloda:
             self.szobaLefoglalas(Foglalas(Szoba(szobaszam, 0), erkezes, tavozas), False)
     
     def szobaLefoglalas(self, adat: Foglalas, visszajelzes: bool = True):
-        from datetime import datetime
-
         szobaszam = adat.szoba.szobaszam
         erkezes = adat.erkezes
         tavozas = adat.tavozas
@@ -117,8 +110,6 @@ class Szalloda:
         return adat.szoba.ar
     
     def foglalasLemondas(self, szobaszam: int, erkezes: str, tavozas: str):
-        from datetime import datetime
-
         erkezes = datetime.strptime(erkezes, '%Y.%m.%d').timestamp()
         tavozas = datetime.strptime(tavozas, '%Y.%m.%d').timestamp()
 
@@ -135,8 +126,6 @@ class Szalloda:
         print(f"A {szobaszam} számú szoba foglalása {datetime.fromtimestamp(erkezes).strftime('%Y.%m.%d')} - {datetime.fromtimestamp(tavozas).strftime('%Y.%m.%d')} között nem található!")
     
     def foglalasokListazasa(self):
-        from datetime import datetime
-
         print(f"A(z) {szalloda.nev} szálloda foglalásainak listája:")
         
         for foglalas in self.foglalasok:
@@ -246,8 +235,6 @@ class Porta:
                 break
 
     def datumellenorzes(self, datum: str):
-        from datetime import datetime
-        
         try:
             datetime.strptime(datum, '%Y.%m.%d')
             return True
